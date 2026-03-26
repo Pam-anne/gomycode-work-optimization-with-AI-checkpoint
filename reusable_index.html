@@ -1,178 +1,93 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Pricing Cards</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f5f7fb;
-      padding: 24px;
-      color: #0f172a;
-    }
-
-    .cards {
-      max-width: 980px;
-      margin: 0 auto;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-      align-items: stretch;
-      justify-content: center;
-    }
-
-    .pricing {
-      width: 300px;
-      background-color: #fff;
-      box-shadow: 0 0 10px #ccc;
-      padding: 16px;
-      border-radius: 10px;
-      text-align: left;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .title {
-      font-size: 22px;
-      font-weight: 700;
-      margin: 0 0 8px;
-    }
-
-    .price {
-      font-size: 18px;
-      color: green;
-      font-weight: 600;
-      margin: 0 0 12px;
-    }
-
-    .features {
-      list-style: none;
-      padding-left: 0;
-      margin: 0 0 16px;
-      flex: 1;
-    }
-
-    .features li {
-      padding: 6px 0;
-      border-bottom: 1px solid #eee;
-    }
-
-    .features li:last-child {
-      border-bottom: none;
-    }
-
-    .btn {
-      width: 100%;
-      background: #0b5cff;
-      color: #fff;
-      padding: 12px 16px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: 600;
-      text-align: center;
-    }
-
-    .btn:hover {
-      background: #094bb3;
-    }
-
-    .btn:focus-visible {
-      outline: 3px solid rgba(11, 92, 255, 0.3);
-      outline-offset: 2px;
-    }
-  </style>
-</head>
-<body>
-  <div class="cards" id="cards"></div>
-
-  <script>
-    /**
-     * Creates a pricing card element (plain JS, no frameworks).
-     * @param {Object} options
-     * @param {string} options.title
-     * @param {string} options.price
-     * @param {string[]} options.features
-     * @param {string} [options.buttonText]
-     * @param {() => void} [options.onButtonClick]
-     * @returns {HTMLDivElement}
-     */
-    function createPricingCard(options) {
-      const {
-        title,
-        price,
-        features,
-        buttonText = "Start Trial",
-        onButtonClick
-      } = options;
-
-      const card = document.createElement("div");
-      card.className = "pricing";
-
-      const titleEl = document.createElement("h2");
-      titleEl.className = "title";
-      titleEl.textContent = title;
-
-      const priceEl = document.createElement("p");
-      priceEl.className = "price";
-      priceEl.textContent = price;
-
-      const listEl = document.createElement("ul");
-      listEl.className = "features";
-
-      for (const item of features) {
-        const li = document.createElement("li");
-        li.textContent = item;
-        listEl.appendChild(li);
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pricing Cards</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #f5f7fb;
+        padding: 24px;
+        color: #0f172a;
       }
 
-      const btn = document.createElement("button");
-      btn.className = "btn";
-      btn.type = "button";
-      btn.textContent = buttonText;
-      btn.addEventListener("click", () => {
-        if (typeof onButtonClick === "function") onButtonClick();
-      });
-
-      card.appendChild(titleEl);
-      card.appendChild(priceEl);
-      card.appendChild(listEl);
-      card.appendChild(btn);
-
-      return card;
-    }
-
-    // Example usage: render multiple cards on the same page.
-    const cardsEl = document.getElementById("cards");
-
-    const pricingData = [
-      {
-        title: "Basic Plan",
-        price: "$9.99 /month",
-        features: ["1 GB Storage", "Basic Support", "All Core Features"],
-        onButtonClick: () => alert("Starting Basic Trial")
-      },
-      {
-        title: "Pro Plan",
-        price: "$19.99 /month",
-        features: ["10 GB Storage", "Priority Support", "Advanced Features"],
-        buttonText: "Go Pro",
-        onButtonClick: () => alert("Starting Pro Trial")
-      },
-      {
-        title: "Team Plan",
-        price: "$49.99 /month",
-        features: ["Shared Workspace", "Team Analytics", "Dedicated Support"],
-        buttonText: "Contact Sales",
-        onButtonClick: () => alert("Contacting Sales")
+      .cards {
+        max-width: 980px;
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        align-items: stretch;
+        justify-content: center;
       }
-    ];
 
-    for (const data of pricingData) {
-      cardsEl.appendChild(createPricingCard(data));
-    }
-  </script>
-</body>
+      .pricing {
+        width: 300px;
+        background-color: #fff;
+        box-shadow: 0 0 10px #ccc;
+        padding: 16px;
+        border-radius: 10px;
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .title {
+        font-size: 22px;
+        font-weight: 700;
+        margin: 0 0 8px;
+      }
+
+      .price {
+        font-size: 18px;
+        color: green;
+        font-weight: 600;
+        margin: 0 0 12px;
+      }
+
+      .features {
+        list-style: none;
+        padding-left: 0;
+        margin: 0 0 16px;
+        flex: 1;
+      }
+
+      .features li {
+        padding: 6px 0;
+        border-bottom: 1px solid #eee;
+      }
+
+      .features li:last-child {
+        border-bottom: none;
+      }
+
+      .btn {
+        width: 100%;
+        background: #0b5cff;
+        color: #fff;
+        padding: 12px 16px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 600;
+        text-align: center;
+      }
+
+      .btn:hover {
+        background: #094bb3;
+      }
+
+      .btn:focus-visible {
+        outline: 3px solid rgba(11, 92, 255, 0.3);
+        outline-offset: 2px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="cards" id="cards"></div>
+
+    <script src="./js/script.js"></script>
+  </body>
 </html>
